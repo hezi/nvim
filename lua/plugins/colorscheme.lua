@@ -1,6 +1,14 @@
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
+  {
+    "neovim/nvim-lspconfig",
+    init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- add keymap for "change source/header"
+      keys[#keys + 1] = { "<leader>cs", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header" }
+    end,
+  },
   { "echasnovski/mini.map", version = "*" },
   {
     "akinsho/toggleterm.nvim",
